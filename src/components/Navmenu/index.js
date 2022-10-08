@@ -64,7 +64,6 @@ function Send() {
             >
               <option value="default">Select Token</option>
               <option value="eth">ETH</option>
-              <option value="sol">SOL</option>
               <option value="matic">MATIC</option>
             </select>
           </div>

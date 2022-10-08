@@ -25,6 +25,14 @@ export default function Selector() {
         <FormControlLabel value="private" control={<Radio />} label="Private" />
       </RadioGroup>
     </FormControl>
+    <footer className="p-4">
+      <button
+        type="submit"
+        className="btn btn-primary submit-button focus:ring focus:outline-none w-full"
+        >
+          Withdraw
+      </button>
+    </footer>
     </div>
   );
 }

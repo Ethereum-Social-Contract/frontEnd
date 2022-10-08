@@ -9,7 +9,7 @@ export const YourComponent = () => {
         justifyContent: "center"
       }}
     >
-      <ConnectButton />
+      <ConnectButton/>
     </div>
   );
 };

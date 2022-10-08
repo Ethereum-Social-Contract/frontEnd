@@ -1,4 +1,4 @@
-import React from 'react';
+import { React, useState } from 'react';
 import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
 import { display } from '@mui/system';
@@ -34,12 +34,18 @@ const rows = [
   { id: 1, tokenName: 'ETH', amount: 22.02, timestamp: "10-07-2022 17:55:25"},
   { id: 2, tokenName: 'MATIC', amount: 100, timestamp: "10-07-2022 17:55:25" },
   { id: 3, tokenName: 'ETH', amount: 20, timestamp: "10-07-2022 17:55:25"},
-  { id: 4, tokenName: 'ETH', amount: 10, timestamp: "10-07-2022 17:55:25" },
+  { id: 4, tokenName: 'ETH', amount: 10, timestamp: "10-07-2022 17:55:25"},
 ];
 
 
 
+
 export default function TransactionsData() {
+  const [isShown, setIsShown] = useState(false);
+  const handleEvent= () => {
+    setIsShown(current => !current)
+  };
+
   return (
     <div style={{
       display: 'flex',
@@ -58,9 +64,10 @@ export default function TransactionsData() {
         checkboxSelection
         disableSelectionOnClick
         experimentalFeatures={{ newEditingApi: true }}
+        onSelectionModelChange={handleEvent}
       />
     </Box>
-    <Selector />
+    {isShown && <Selector />}
     </div>
   );
 }
