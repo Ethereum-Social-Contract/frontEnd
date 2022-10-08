@@ -1,0 +1,7 @@
+.MuiBox-root {
+    display:'flex';
+    width:100vw;
+    background-color: aquamarine;
+    align-content: center;
+    justify-content: center;
+}
