@@ -8,6 +8,7 @@ import "./Navmenu.css"
 import TransactionsData from '../TransactionsData/index';
 
 
+
 //add withdraw and private withdraw
 export default function Navmenu() {
   const [value, setValue] = useState(0);
@@ -126,7 +127,16 @@ function Withdraw() {
 
   function Transactions() {
     return (
-      <TransactionsData/>
+      <div style={{
+        display: 'flex',
+        width: '100vw',
+        flexDirection: 'column',
+        height: '100vh',
+        paddingTop:'5vh',
+        justifySelf:'center'
+      }}>
+        <TransactionsData />
+      </div>
     );
   }
 

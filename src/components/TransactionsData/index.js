@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
 import { display } from '@mui/system';
 import "./TransactionsData.css"
+import Selector from '../Selector';
 
 const timestamp = Date.now();
 
@@ -30,21 +31,25 @@ const columns = [
 ];
 
 const rows = [
-  { id: 1, tokenName: 'ETH', amount: 22.02, timestamp: "10-07-2022 17:55:25" },
+  { id: 1, tokenName: 'ETH', amount: 22.02, timestamp: "10-07-2022 17:55:25"},
   { id: 2, tokenName: 'MATIC', amount: 100, timestamp: "10-07-2022 17:55:25" },
   { id: 3, tokenName: 'ETH', amount: 20, timestamp: "10-07-2022 17:55:25"},
-  { id: 4, tokenName: 'ETH', amount: 10, timestamp: "10-07-2022 17:55:25"},
+  { id: 4, tokenName: 'ETH', amount: 10, timestamp: "10-07-2022 17:55:25" },
 ];
+
+
 
 export default function TransactionsData() {
   return (
     <div style={{
       display: 'flex',
-      justifyContent: 'center',
-      height: '100vh',
-      paddingTop:'5vh'
+      width: '100vw',
+      paddingTop:'5vh',
+      alignContent:'center',
+      justifyContent:'center',
+      flexDirection:'column'
     }}>
-    <Box sx={{ display: 'flex', height: '42vh', width: '42vw'}}>
+    <Box sx={{ display: 'flex', height: '42vh', width: '42vw', alignSelf: 'center', justifySelf:'center'}}>
       <DataGrid
         rows={rows}
         columns={columns}
@@ -55,6 +60,7 @@ export default function TransactionsData() {
         experimentalFeatures={{ newEditingApi: true }}
       />
     </Box>
+    <Selector />
     </div>
   );
 }
