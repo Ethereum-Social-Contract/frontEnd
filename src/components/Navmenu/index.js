@@ -8,6 +8,7 @@ import "./Navmenu.css"
 import TransactionsData from '../TransactionsData/index';
 
 
+//add withdraw and private withdraw
 export default function Navmenu() {
   const [value, setValue] = useState(0);
   const [isShown, setIsShown] = useState("send");
@@ -26,14 +27,15 @@ export default function Navmenu() {
   return (
     <Box sx={{ width: '100%', bgcolor: 'background.paper', paddingTop:"10%"}}>
       <Tabs value={value} onChange={handleChange} centered>
-        <Tab label="Send" onClick={() => { handleClick("send")}}/>
-        <Tab label="Withdraw" onClick={() => { handleClick("withdraw")}}/>
-        <Tab label="My transactions" onClick={() => { handleClick("transactions")}}/>
+        <Tab label="Deposit" onClick={() => { handleClick("send")}}/>
+        <Tab label="My deposits" onClick={() => { handleClick("transactions")}}/>
+        <Tab label="Report" onClick={() => { handleClick("report")}}/>
       </Tabs>
       {/* 👇️ show component on click */}
       {isShown==="send" && <Send />}
       {isShown==="withdraw" && <Withdraw />}
       {isShown==="transactions" && <Transactions />}
+      {isShown==="report" && <Report />}
     </Box>
      );
 }
@@ -43,25 +45,40 @@ function Send() {
     <div className="credit-card w-full lg:w-1/2 sm:w-auto shadow-lg mx-auto rounded-xl bg-white">
       <main className="mt-4 p-4">
         <h1 className="text-xl font-semibold text-gray-700 text-center">
-          Send Funds
+          Deposit
         </h1>
         <div className="">
-          <div className="my-3">
+          {/*<div className="my-3">
             <input
               type="text"
               name="addr"
               className="input input-bordered block w-full focus:ring focus:outline-none"
               placeholder="Recipient Address"
             />
+          </div>*/}
+          
+          <div className="my-3">
+            <select name="token"
+              className="input input-bordered block w-full focus:ring focus:outline-none"
+            >
+              <option value="default">Select Token</option>
+              <option value="eth">ETH</option>
+              <option value="sol">SOL</option>
+              <option value="matic">MATIC</option>
+            </select>
           </div>
           <div className="my-3">
-            <input
-              name="ether"
-              type="text"
+            <select name="token"
               className="input input-bordered block w-full focus:ring focus:outline-none"
-              placeholder="Amount in ETH"
-            />
+            >
+              <option value="default">Select Amount</option>
+              <option value="eth">1</option>
+              <option value="matic">10</option>
+              <option value="matic">100</option>
+              <option value="matic">1000</option>
+            </select>
           </div>
+          
         </div>
       </main>
       <footer className="p-4">
@@ -111,4 +128,36 @@ function Withdraw() {
     return (
       <TransactionsData/>
     );
+  }
+
+  function Report() {
+    return (
+      <form className="m-4 bg-white" style={{height:"100vh"}}>
+        <div className="credit-card w-full lg:w-1/2 sm:w-auto shadow-lg mx-auto rounded-xl bg-white">
+          <main className="mt-4 p-4">
+            <h1 className="text-xl font-semibold text-gray-700 text-center">
+              Report Transaction
+            </h1>
+            <div className="">
+              <div className="my-3">
+                <input
+                  type="text"
+                  name="addr"
+                  className="input input-bordered block w-full focus:ring focus:outline-none"
+                  placeholder="Transaction ID"
+                />
+              </div>
+            </div>
+          </main>
+          <footer className="p-4">
+            <button
+            type="submit"
+            className="btn btn-primary submit-button focus:ring focus:outline-none w-full"
+            >
+              Report
+            </button>
+          </footer>
+        </div>
+      </form>
+      );
   }
