@@ -29,10 +29,16 @@ export default function Selector() {
       <button
         type="submit"
         className="btn btn-primary submit-button focus:ring focus:outline-none w-full"
+        onClick={deleteData}
         >
           Withdraw
       </button>
     </footer>
     </div>
   );
+}
+
+function deleteData(){
+  if(!window.currentRow) return;
+  window.data.splice(window.currentRow-1, 1)
 }
