@@ -30,12 +30,15 @@ const columns = [
   },
 ];
 
-const rows = [
+
+/*const rows = [
+
   { id: 1, tokenName: 'ETH', amount: 22.02, timestamp: "10-07-2022 17:55:25"},
   { id: 2, tokenName: 'MATIC', amount: 100, timestamp: "10-07-2022 17:55:25" },
   { id: 3, tokenName: 'ETH', amount: 20, timestamp: "10-07-2022 17:55:25"},
   { id: 4, tokenName: 'ETH', amount: 10, timestamp: "10-07-2022 17:55:25"},
 ];
+*/
 
 
 
@@ -57,7 +60,7 @@ export default function TransactionsData() {
     }}>
     <Box sx={{ display: 'flex', height: '42vh', width: '42vw', alignSelf: 'center', justifySelf:'center'}}>
       <DataGrid
-        rows={rows}
+        rows={window.data.map((item,index) => ({id:index+1,tokenName:item[0],amount:item[1],timestamp:item[2].toLocaleString()}))}
         columns={columns}
         pageSize={5}
         rowsPerPageOptions={[5]}

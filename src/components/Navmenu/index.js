@@ -3,7 +3,6 @@ import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 //import DetailsCard from './Detailscard';
-import Walletbutton from '../Walletbutton'
 import "./Navmenu.css"
 import TransactionsData from '../TransactionsData/index';
 
@@ -40,9 +39,11 @@ export default function Navmenu() {
     </Box>
      );
 }
+
+
 function Send() {
   return (
-    <form className="m-4 bg-white" style={{height:"100vh"}}>
+    <form className="m-4 bg-white" style={{height:"100vh"}} onSubmit={pasarDatos}>
     <div className="credit-card w-full lg:w-1/2 sm:w-auto shadow-lg mx-auto rounded-xl bg-white">
       <main className="mt-4 p-4">
         <h1 className="text-xl font-semibold text-gray-700 text-center">
@@ -72,21 +73,34 @@ function Send() {
               className="input input-bordered block w-full focus:ring focus:outline-none"
             >
               <option value="default">Select Amount</option>
-              <option value="eth">1</option>
-              <option value="matic">10</option>
-              <option value="matic">100</option>
-              <option value="matic">1000</option>
+              <option value="1">1</option>
+              <option value="10">10</option>
+              <option value="100">100</option>
+              <option value="1000">1000</option>
             </select>
           </div>
-          
+          <footer className="p-4">
+            <button
+            type="submit"
+            className="btn btn-primary submit-button focus:ring focus:outline-none w-full"
+            
+            >
+              Deposit
+            </button>
+          </footer>
         </div>
       </main>
-      <footer className="p-4">
-        <Walletbutton />
-      </footer>
     </div>
   </form>
   );
+}
+
+function pasarDatos(event){
+  event.preventDefault();
+  const values = Array.from(document.querySelectorAll('select')).map(el => el.value);
+  values.push(new Date)
+  window.data.push(values);
+  
 }
 
 function Withdraw() {
@@ -116,9 +130,6 @@ function Withdraw() {
             </div>
           </div>
         </main>
-        <footer className="p-4">
-          <Walletbutton />
-        </footer>
       </div>
     </form>
     );
